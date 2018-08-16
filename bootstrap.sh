@@ -87,4 +87,4 @@ then
     echo "flush privileges" | mysql -uroot -p$MYSQL_ROOT_PASSWORD
     touch /var/log/databasesetup
 fi
-export PATH=$PATH:/var/www/html/bin
+export PATH=$PATH:/srv/html/bin
