@@ -1,10 +1,10 @@
 # vagrant-centos7-magento2
 
-Download magento2 from magento.com and create html directory
+First create html directory then download latest magento2 release from [here](https://github.com/magento/magento2/releases) and extract the files to the root of the html directory
 
 `mkdir html`
 
-to install dependencies and run vagrant vm run the following two commands:
+to install dependencies and run the vagrant vm run the following two commands:
 
 `vagrant plugin install vagrant-vbguest`
 
