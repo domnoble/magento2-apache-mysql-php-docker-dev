@@ -11,11 +11,9 @@ sudo yum -y install kernel-devel kernel-headers dkms gcc gcc-c++
 sudo yum -y install epel-release yum-utils expect policycoreutils-python selinux-policy-minimum
 sudo yum -y install mailx git libmcrypt-devel openssl-devel wget nano curl nodejs
 #
-# MySQL server 5.6 and MySQL cli interface install, you can set the root database password here, the default password is "rootpass".
-# todo : add options for more database versions like mariaDB, SQLite ect and add variable for password from vagrant if possible
+# MySQL server 5.6 and MySQL cli interface install, the mysql root password is defined at the start of this file.
 #
-#
-echo -e "${BLUE}Starting MariaDB Install${NC}"
+echo -e "${BLUE}Starting MySQL Install${NC}"
 sudo yum -y update
 sudo yum -y install http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
 sudo yum repolist enabled | grep "mysql.*-community.*"
@@ -25,11 +23,10 @@ systemctl enable mysqld
 systemctl start mysqld
 #
 sudo mysql -e "UPDATE mysql.user SET Password=PASSWORD('$MYSQL_ROOT_PASSWORD') WHERE User='root'"
-# Make our changes take effect
+#
 sudo mysql -e "FLUSH PRIVILEGES"
 #
-# Apache2 installation, this could also be changed to nginx
-# todo : add switch between nginx and apache
+# Apache2.4 installation
 #
 echo -e "${BLUE}Starting Apache2 Install${NC}"
 sudo yum -y install httpd
@@ -40,7 +37,7 @@ sudo systemctl start httpd
 echo -e "${BLUE}Apache should be version >= 2.4, the current version is :${NC}"
 rpm -q httpd
 #
-# Installation of PHPFPM with PHP7.0, PHP5.6 and all the magento dependencies using the recommended ondrej/php PPA.
+# Installation of PHPFPM with PHP7.1 and all the magento dependencies using the recommended IUS repo
 #
 echo -e "${BLUE}Adding IUS(Inline for Upstream Stable) for PHP7.1 binaries${NC}"
 sudo yum install -y http://dl.iuscommunity.org/pub/ius/stable/CentOS/7/x86_64/ius-release-1.0-14.ius.centos7.noarch.rpm

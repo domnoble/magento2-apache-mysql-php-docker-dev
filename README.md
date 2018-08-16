@@ -1,6 +1,6 @@
 # vagrant-centos7-magento2
 
-First create html directory then download latest magento2 release from magento.com or [here on github](https://github.com/magento/magento2/releases) and extract the files to the root of the html directory
+First create html directory then download latest magento2 release from magento.com or [here on github](https://github.com/magento/magento2/releases) and extract the files to the root of the html directory, the main difference is the magento.com version comes with sample data and vendor dependencies already installed
 
 `mkdir html`
 
