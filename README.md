@@ -18,23 +18,23 @@ array (
 ),
 ```
 
-to remove SampleData use the folling 3 commands :
+login to the guest vm via ssh :
 
 `vagrant ssh`
 
+navigate to the magento2 directory :
+
 `cd /srv/html`
 
-`php bin/magento sampledata:remove`
-
-if you installed the release from github then you will need to run composer for the php dependencies, you can also run this on the host machine if you have setup php with the correct libraries enabled
+if you installed the release from github then you will need to run composer for the php dependencies the stable version from magento.com already includes the vendor files so you do not need to run this, you can also run this on the host machine if you have setup php with the correct libraries enabled
 
 `composer install`
 
-you can then install magento using the command line
+you can then install magento2 using the command line like below or GUI if you visit localhost:8085 in the browser.
 
 ```
 php bin/magento setup:install \
- --base-url=http://localhost \
+ --base-url=http://localhost:8085 \
  --db-host=localhost \
 --db-name=magento \
 --db-user=mageuser \
@@ -51,8 +51,14 @@ php bin/magento setup:install \
 --use-rewrites=1
 ```
 
-you may also need to run:
+if you installed magento2 from magento.com and did a GUI install you may want to remove the sample data:
 
-`php bin/magento setup:static-content:deploy`
+`php bin/magento sampledata:remove`
+
+you may also need to run the following command to setup themes, scripts and css :
+
+`php bin/magento setup:static-content:deploy -f`
+
+if you have a problem with urls not going to the right location :
 
 `php bin/magento indexer:reindex`

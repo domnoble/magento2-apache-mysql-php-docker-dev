@@ -68,6 +68,8 @@ echo -e "${BLUE}Configuring Apache${NC}"
 #
 sudo rm /etc/httpd/conf/httpd.conf
 sudo cp /srv/conf/httpd.conf /etc/httpd/conf/
+sudo rm /etc/php.ini
+sudo cp /srv/conf/php.ini /etc/php.ini
 #
 sudo apachectl restart
 #
