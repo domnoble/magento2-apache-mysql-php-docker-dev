@@ -9,7 +9,7 @@ MYSQL_ROOT_PASSWORD="sqlStrongPassword"
 sudo yum -y update kernel
 sudo yum -y install kernel-devel kernel-headers dkms gcc gcc-c++
 sudo yum -y install epel-release yum-utils expect policycoreutils-python selinux-policy-minimum
-sudo yum -y install mailx git libmcrypt-devel openssl-devel wget nano curl
+sudo yum -y install mailx git libmcrypt-devel openssl-devel wget nano curl nodejs
 #
 # MySQL server 5.6 and MySQL cli interface install, you can set the root database password here, the default password is "rootpass".
 # todo : add options for more database versions like mariaDB, SQLite ect and add variable for password from vagrant if possible
@@ -73,8 +73,8 @@ sudo apachectl restart
 #
 # Installation of composer
 #
-#curl -sS https://getcomposer.org/installer | php
-#sudo mv composer.phar /usr/bin/composer
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/bin/composer
 #
 # Checks if database is already setup if /var/log/databasesetup doesn't exist it will set up a database and database user
 # todo : add variable for db_name, username and password carry variable from initial root password setup
