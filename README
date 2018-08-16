@@ -1,6 +1,8 @@
 # vagrant-centos7-magento2
 
-Download magento2 from magento.com and place it in html directory
+Download magento2 from magento.com and create html directory
+
+`mkdir html`
 
 to install dependencies and run vagrant vm run the following two commands:
 
