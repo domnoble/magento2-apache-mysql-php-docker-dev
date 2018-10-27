@@ -1,8 +1,12 @@
 # vagrant-centos7-magento2
 
-## Apache 2.4.27+ (httpd24 rh scl) & PHP 7.1+ (php71u ius) & MySQL Community 5.7+
+Vagrant CentOS7 based development box for magento 2
 
-## php-fpm
+## Apache 2.4.27+ (httpd24 rh scl) & PHP 7.1+ (php71u ius) & MySQL 5.7+
+
+This development machine uses the more up to date redhat software collections httpd24 for http2 testing, as opposed to the usual httpd(Apache 2.4.6) that is included in the default centos repository, it also uses php from Inline with Upstream Stable community project
+
+### Installation
 
 First create html directory then download latest magento2 release from magento.com or [here on github](https://github.com/magento/magento2/releases) and extract the files to the root of the html directory, the main difference is the magento.com version comes with sample data and vendor dependencies already installed
 
