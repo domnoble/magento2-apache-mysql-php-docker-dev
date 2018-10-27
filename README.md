@@ -1,5 +1,9 @@
 # vagrant-centos7-magento2
 
+## Apache 2.4.27+ (httpd24 rh scl) & PHP 7.1+ (php71u ius) & MySQL Community 5.7+
+
+## php-fpm
+
 First create html directory then download latest magento2 release from magento.com or [here on github](https://github.com/magento/magento2/releases) and extract the files to the root of the html directory, the main difference is the magento.com version comes with sample data and vendor dependencies already installed
 
 `mkdir html`
@@ -12,10 +16,10 @@ to install dependencies and run the vagrant vm run the following two commands:
 
 If you download with sample data from magento.com a quick fix for the installer failing you can set session save path in app/etc/env.php, (will still hang on 66% when installing SampleData successfully):
 ```
-array (
+'session' => [
   'save' => 'files',
   'save_path' => '/tmp',
-),
+],
 ```
 
 login to the guest vm via ssh :

@@ -39,8 +39,8 @@ Vagrant.configure(2) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   config.vm.synced_folder ".", "/vagrant", disabled: true
-  config.vm.synced_folder './html', '/srv/html'
-  config.vm.synced_folder './conf', '/srv/conf'
+  config.vm.synced_folder "./html", "/srv/html", type: "nfs"
+  config.vm.synced_folder "./conf", "/srv/conf", type: "nfs"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -49,8 +49,8 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider "virtualbox" do |vb|
       # vb.gui = true
-      vb.memory = 2048
-      vb.cpus = 2
+      vb.memory = 4096
+      vb.cpus = 4
   end
 
   #
