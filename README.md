@@ -1,6 +1,6 @@
 # vagrant-centos7-magento2
 
-Vagrant CentOS7 based development box for magento 2
+Vagrant CentOS7 based development box for magento 2, with second option docker-compose development stack for magento 2
 
 ## Apache 2.4.27+ (httpd24 rh scl) & PHP 7.1+ (php71u ius) & MySQL 5.7+
 
