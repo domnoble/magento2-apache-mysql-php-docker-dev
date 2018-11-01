@@ -4,13 +4,11 @@
 
 ## Apache 2.4.37, PHP 7.1+ & MySQL 5.7+
 
-This stack is suitible for development only, setup with the correct php extensions and apache modules for magento2
+This stack is suitible for development only, setup with the correct php extensions and apache modules for magento2, with http2, using fastcgi mod_proxy for connecting php and apache
 
 ### Installation
 
 First create html directory then download latest magento2 release from magento.com or [here on github](https://github.com/magento/magento2/releases) and extract the files to the root of the html directory, the main difference is the magento.com version comes with sample data and vendor dependencies already installed
-
-`mkdir html`
 
 to install dependencies and run the containers:
 
@@ -33,7 +31,7 @@ you can then install magento2 using the command line like below or GUI if you vi
 ```
 docker-compose run php php bin/magento setup:install \
  --base-url=http://localhost:8085 \
- --db-host=localhost \
+ --db-host=db:3306 \
 --db-name=magento \
 --db-user=mageuser \
 --db-password=magepass1234 \
