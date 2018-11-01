@@ -1,1 +1,0 @@
-php bin/magento setup:install  --base-url=http://localhost:8087 --db-host=db:3306 --db-name=magento --db-user=mageuser --db-password=magepass1234 --backend-frontname=admin --admin-firstname=admin --admin-lastname=admin --admin-email=admin@example.com --admin-user=admin --admin-password=AdminPass1234 --language=en_GB --currency=GBP --timezone=Europe/London --use-rewrites=1

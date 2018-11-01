@@ -1,10 +1,10 @@
-# vagrant-centos7-magento2
+# magento2-apache-mysql-php-docker-dev"
 
-Vagrant CentOS7 based development box for magento 2, with second option docker-compose development stack for magento 2
+ docker-compose development stack for magento 2 has been tested on windows and linux
 
-## Apache 2.4.27+ (httpd24 rh scl) & PHP 7.1+ (php71u ius) & MySQL 5.7+
+## Apache 2.4.37, PHP 7.1+ & MySQL 5.7+
 
-This development machine uses the more up to date redhat software collections httpd24 for http2 testing, as opposed to the usual httpd(Apache 2.4.6) that is included in the default centos repository, it also uses php from Inline with Upstream Stable community project
+This stack is suitible for development only, setup with the correct php extensions and apache modules for magento2
 
 ### Installation
 
@@ -12,27 +12,17 @@ First create html directory then download latest magento2 release from magento.c
 
 `mkdir html`
 
-to install dependencies and run the vagrant vm run the following two commands:
+to install dependencies and run the containers:
 
-`vagrant plugin install vagrant-vbguest`
+`docker-compose up -d`
 
-`vagrant up`
+to access the php container to run commands in its shell you can use :
 
-If you download with sample data from magento.com a quick fix for the installer failing you can set session save path in app/etc/env.php, (will still hang on 66% when installing SampleData successfully):
-```
-'session' => [
-  'save' => 'files',
-  'save_path' => '/tmp',
-],
-```
+`docker-compose exec php /bin/bash`
 
-login to the guest vm via ssh :
+the php container is set to have the magento directory as its working directory so you can also run commands like so :
 
-`vagrant ssh`
-
-navigate to the magento2 directory :
-
-`cd /srv/html`
+`docker-compose run php php bin/magento`
 
 if you installed the release from github then you will need to run composer for the php dependencies the stable version from magento.com already includes the vendor files so you do not need to run this, you can also run this on the host machine if you have setup php with the correct libraries enabled
 
@@ -41,18 +31,18 @@ if you installed the release from github then you will need to run composer for 
 you can then install magento2 using the command line like below or GUI if you visit localhost:8085 in the browser.
 
 ```
-php bin/magento setup:install \
+docker-compose run php php bin/magento setup:install \
  --base-url=http://localhost:8085 \
  --db-host=localhost \
 --db-name=magento \
 --db-user=mageuser \
---db-password=magepass \
+--db-password=magepass1234 \
 --backend-frontname=admin \
 --admin-firstname=admin \
 --admin-lastname=admin \
 --admin-email=admin@example.com \
 --admin-user=admin \
---admin-password=AdminPass \
+--admin-password=AdminPass1234 \
 --language=en_GB \
 --currency=GBP \
 --timezone=Europe/London \
