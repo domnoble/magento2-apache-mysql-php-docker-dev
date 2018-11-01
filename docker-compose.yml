@@ -1,0 +1,52 @@
+version: "3.3"
+services:
+  php:
+    build: './build/php/'
+    restart: always
+    hostname: php
+    volumes:
+      - ./html/:/usr/local/apache2/htdocs/
+    ports:
+      - "9000:9000"
+    links :
+      - db
+    networks:
+      - backend
+      - frontend
+
+  apache:
+    build: './build/apache/'
+    restart: always
+    depends_on:
+      - php
+      - db
+    links:
+      - php
+    ports:
+      - "8087:80"
+    volumes:
+      - ./html/:/usr/local/apache2/htdocs/
+    networks:
+      - frontend
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASS}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - backend
+
+volumes:
+  db_data:
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge

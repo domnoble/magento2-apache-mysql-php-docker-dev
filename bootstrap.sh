@@ -40,7 +40,7 @@ echo -e "${GREEN}Starting Apache2.4 Install${NC}"
 sudo yum -y install httpd24 httpd24-httpd httpd24-httpd-devel httpd24-mod_ssl httpd24-curl httpd24-build httpd24-httpd-tools httpd24-libcurl httpd24-libnghttp2 httpd24-libnghttp2-devel httpd24-mod_ssl httpd24-mod_session httpd24-nghttp2
 #
 scl enable httpd24 bash
-sudo cp /srv/conf/enablehttpd24.sh /etc/profile.d/
+sudo cp /srv/conf/vagrant/enablehttpd24.sh /etc/profile.d/
 #
 sudo systemctl enable httpd24-httpd
 sudo systemctl start httpd24-httpd
@@ -71,10 +71,10 @@ sudo sed -i 's_SELINUX=enforcing_SELINUX=disabled_' /etc/selinux/config
 echo -e "${GREEN}Configuring Apache & PHP${NC}"
 #
 sudo rm /opt/rh/httpd24/root/etc/httpd/conf/httpd.conf
-sudo cp /srv/conf/httpd.conf /opt/rh/httpd24/root/etc/httpd/conf/
-sudo cp /srv/conf/vhost.conf /opt/rh/httpd24/root/etc/httpd/conf.d/
+sudo cp /srv/conf/vagrant/httpd.conf /opt/rh/httpd24/root/etc/httpd/conf/
+sudo cp /srv/conf/vagrant/vhost.conf /opt/rh/httpd24/root/etc/httpd/conf.d/
 sudo rm /etc/php.ini
-sudo cp /srv/conf/php.ini /etc/php.ini
+sudo cp /srv/conf/vagrant/php.ini /etc/php.ini
 #
 sudo systemctl enable php-fpm
 sudo systemctl start php-fpm
