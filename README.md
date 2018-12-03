@@ -58,13 +58,17 @@ php bin/magento setup:install \
 --use-rewrites=1
 ```
 
-if you installed magento2 from magento.com and did a GUI install you may want to remove the sample data:
-
-`php bin/magento sampledata:remove`
-
 you can set magento to development mode with
 
 `php bin/magento deploy:mode:set development`
+
+you may want to add the sample data, you need to be in dev mode for this to work :
+
+`php bin/magento sampledata:deploy`
+
+and upgrade magento to reflect the changes
+
+`php bin/magento setup:upgrade`
 
 you can clear magento cache using :
 
