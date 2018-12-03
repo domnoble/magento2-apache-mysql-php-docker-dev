@@ -8,9 +8,9 @@ This stack is suitible for development only, setup with the correct php extensio
 
 ### Installation
 
-clone this repository into a <projectDirectory> of your choice and move into directory
+clone this repository into a project directory of your choice and move into directory
 
-`git clone https://github.com/domnoble/magento2-apache-mysql-php-docker-dev <projectDirectory> && cd <projectDirectory>`
+`git clone https://github.com/domnoble/magento2-apache-mysql-php-docker-dev magento2 && cd magento2`
 
 clone magento2 from [here on github](https://github.com/magento/magento2/releases) and put the files in the html directory:
 
