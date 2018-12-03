@@ -60,7 +60,7 @@ php bin/magento setup:install \
 
 you can set magento to development mode with
 
-`php bin/magento deploy:mode:set development`
+`php bin/magento deploy:mode:set developer`
 
 you may want to add the sample data, you need to be in dev mode for this to work :
 
