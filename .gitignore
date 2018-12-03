@@ -1,2 +1,4 @@
 /html/*
 !/html/
+/sample-data/*
+!/sample-data/

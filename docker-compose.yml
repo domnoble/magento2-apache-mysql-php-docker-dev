@@ -6,6 +6,7 @@ services:
     hostname: php
     volumes:
       - ./html/:/usr/local/apache2/htdocs/
+      - ./sample-data/:/usr/local/apache2/m2-sd/
     ports:
       - "9000:9000"
     links :
@@ -23,9 +24,10 @@ services:
     links:
       - php
     ports:
-      - "8080:80"
+      - "8087:80"
     volumes:
       - ./html/:/usr/local/apache2/htdocs/
+      - ./sample-data/:/usr/local/apache2/m2-sd/
     networks:
       - frontend
 
