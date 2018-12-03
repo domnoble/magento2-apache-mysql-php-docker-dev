@@ -68,13 +68,9 @@ you can set magento to development mode with
 
 `php bin/magento deploy:mode:set developer`
 
-if you want to install sample data you need to set the symbolic link to the sample data directory
+if you want to install sample data you need to set the symbolic links to the sample data directory
 
 `php -f /usr/local/apache2/m2-sd/dev/tools/build-sample-data.php -- --ce-source="/usr/local/apache2/htdocs/"`
-
-you may want to add the sample data, you need to be in dev mode for this to work :
-
-`php bin/magento sampledata:deploy`
 
 and upgrade magento to reflect the changes
 
