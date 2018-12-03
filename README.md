@@ -1,10 +1,10 @@
-# magento2-apache-mysql-php-docker-dev"
+# magento2-apache-mysql-php-docker-dev
 
  docker-compose development stack for magento 2 has been tested on windows and linux
 
-## Apache 2.4.37, PHP 7.1+ & MySQL 5.7+
+## Apache >2.4.37, PHP >7.1 & MySQL >5.7
 
-This stack is suitible for development only, setup with the correct php extensions and apache modules for magento2, with http2, using fastcgi mod_proxy for connecting php and apache
+This stack is suitible for development only, setup with the correct php extensions and apache modules for magento2, with http2, using fastcgi mod_proxy for connecting php and apache, also with redis and solr
 
 ### Installation
 
