@@ -42,8 +42,31 @@ services:
     networks:
       - backend
 
+  redis:
+    restart: always
+    image: redis
+    volumes:
+      - redis_data:/data
+    entrypoint: redis-server --appendonly yes
+    networks:
+      - backend
+
+  solr:
+    image: solr
+    restart: always
+    volumes:
+      - solr_data:/opt/solr/server/solr/mycores
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - mycore
+    networks:
+      - backend
+
 volumes:
   db_data:
+  redis_data:
+  solr_data:
 
 networks:
   frontend:

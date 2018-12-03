@@ -8,7 +8,22 @@ This stack is suitible for development only, setup with the correct php extensio
 
 ### Installation
 
-First create html directory then download latest magento2 release from magento.com or [here on github](https://github.com/magento/magento2/releases) and extract the files to the root of the html directory, the main difference is the magento.com version comes with sample data and vendor dependencies already installed
+clone this repository into a <projectDirectory> of your choice and move into directory
+
+`git clone https://github.com/domnoble/magento2-apache-mysql-php-docker-dev <projectDirectory> && cd <projectDirectory>`
+
+clone magento2 from [here on github](https://github.com/magento/magento2/releases) and put the files in the html directory:
+
+`git clone https://github.com/magento/magento2.git html`
+
+if you want to customise the database password or user now would be the point, you can do that by editing the .env file:
+
+```
+MYSQL_ROOT_PASSWORD=rootpassword
+MYSQL_DATABASE=magento
+MYSQL_USER=mageuser
+MYSQL_PASS=magepass1234
+```
 
 to install dependencies and run the containers:
 
@@ -18,20 +33,16 @@ to access the php container to run commands in its shell you can use :
 
 `docker-compose exec php /bin/bash`
 
-the php container is set to have the magento directory as its working directory so you can also run commands like so :
-
-`docker-compose run php php bin/magento`
-
-if you installed the release from github then you will need to run composer for the php dependencies the stable version from magento.com already includes the vendor files so you do not need to run this, you can also run this on the host machine if you have setup php with the correct libraries enabled
+You will need to install the PHP project dependencies using composer, run inside php container shell :
 
 `composer install`
 
-you can then install magento2 using the command line like below or GUI if you visit localhost:8085 in the browser.
+you can then install magento2 using the shell like below or GUI if you visit localhost:8080 in the browser.
 
 ```
-docker-compose run php php bin/magento setup:install \
- --base-url=http://localhost:8085 \
- --db-host=db:3306 \
+php bin/magento setup:install \
+--base-url=http://localhost:8080 \
+--db-host=db:3306 \
 --db-name=magento \
 --db-user=mageuser \
 --db-password=magepass1234 \
@@ -51,10 +62,19 @@ if you installed magento2 from magento.com and did a GUI install you may want to
 
 `php bin/magento sampledata:remove`
 
-you may also need to run the following command to setup themes, scripts and css :
+you can set magento to development mode with
+
+`php bin/magento deploy:mode:set development`
+
+you can clear magento cache using :
+
+`php bin/magento cache:clear`
+
+if you dont set development mode you may also need to deploy static content :
 
 `php bin/magento setup:static-content:deploy -f`
 
-if you have a problem with urls not going to the right location :
+if you have a problem with urls not resolving and can't login :
 
 `php bin/magento indexer:reindex`
+
